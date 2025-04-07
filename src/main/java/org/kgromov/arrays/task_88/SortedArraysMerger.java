@@ -30,6 +30,17 @@ public class SortedArraysMerger {
         Arrays.sort(nums1);
     }
 
+    public void merge_with_arrays_optimized(int[] nums1, int m, int[] nums2, int n) {
+        int resultLength = n + m;
+        if (resultLength != nums1.length || n != nums2.length || resultLength == 0 || resultLength > 200 || n == 0) {
+            return;
+        }
+        System.arraycopy(nums2, 0, nums1, m, n);
+        if (m > 0 || nums1[m - 1] >= nums2[0]) {
+            Arrays.sort(nums1);
+        }
+    }
+
 
     // other solutions (< 1 ms)
     public void merge(int[] nums1, int m, int[] nums2, int n) {
