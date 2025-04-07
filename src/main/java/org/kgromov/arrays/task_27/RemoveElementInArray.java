@@ -1,10 +1,6 @@
 package org.kgromov.arrays.task_27;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
@@ -27,8 +23,7 @@ public class RemoveElementInArray {
         int k = 0; // Position to place next non-val element
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != val) {
-                nums[k] = nums[i];
-                k++;
+                nums[k++] = nums[i];
             }
         }
         return k;
