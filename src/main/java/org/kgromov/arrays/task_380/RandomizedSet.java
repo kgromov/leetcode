@@ -14,21 +14,23 @@ public class RandomizedSet {
     }
 
     public boolean insert(int val) {
-        boolean added = this.set.add(val);
-        if (added) {
-            this.list.add(val);
+        if (this.set.contains(val)) {
+            return false;
         }
-        return added;
+        this.set.add(val);
+        this.list.add(val);
+        return true;
     }
 
     public boolean remove(int val) {
-        boolean removed = this.set.remove(val);
-        if (removed) {
-            int index = this.list.indexOf(val);
-            list.set(index, this.list.getLast());
-            list.removeLast();
+        if (!this.set.contains(val)) {
+            return false;
         }
-        return removed;
+        this.set.remove(val);
+        int index = this.list.indexOf(val);
+        list.set(index, this.list.getLast());
+        list.removeLast();
+        return true;
     }
 
     public int getRandom() {
