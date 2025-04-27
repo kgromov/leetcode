@@ -45,19 +45,12 @@ public class GroupAnagram {
     }
 
     public List<List<String>> groupAnagramsSample(String[] strs) {
-        List<List<String>> groups = new ArrayList<>();
-        Map<String, List<String>> hsh = new HashMap<>();
-        Set<String> sortedStrings = new LinkedHashSet<>();
-
+        Map<String, List<String>> groupsBySortedSting = new LinkedHashMap<>();
         for (String str : strs) {
             String sorted = this.sortedCharsInString(str);
-            hsh.computeIfAbsent(sorted, _ -> new ArrayList<>()).add(str);
-            sortedStrings.add(sorted);
+            groupsBySortedSting.computeIfAbsent(sorted, _ -> new ArrayList<>()).add(str);
         }
-        for (String str : sortedStrings) {
-            groups.add(hsh.get(str));
-        }
-        return groups;
+        return new ArrayList<>(groupsBySortedSting.values());
     }
 
     public List<List<String>> groupAnagramsCrazy(String[] strs) {
